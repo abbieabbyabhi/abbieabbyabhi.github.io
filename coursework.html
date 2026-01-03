@@ -83,10 +83,7 @@
       background: var(--faint);
       transition: transform 0.6s var(--ease-apple);
     }
-    .avatar-frame:hover {
-      transform: scale(1.05) rotate(-2deg);
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
-    }
+    
     .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
 
     .identity-header h1 {
@@ -136,8 +133,6 @@
     .resume-group {
       display: flex;
       flex-direction: column;
-      /* No gap here so the list sits tight under "Resume" if desired, 
-         or small gap (4px) for breathing room */
       gap: 2px; 
     }
     
@@ -146,8 +141,8 @@
       display: flex;
       flex-direction: column;
       border-left: 2px solid var(--faint);
-      margin-left: 1px;   /* Slight offset to align with text edge */
-      padding-left: 16px; /* Indent content */
+      margin-left: 1px;
+      padding-left: 16px;
       margin-top: 4px;
       margin-bottom: 4px;
     }
@@ -155,7 +150,7 @@
     /* The sub-links (Work, Research, Awards) */
     .tree-link {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px; /* Matches stack-key size */
+      font-size: 12px;
       color: var(--mid);
       padding: 5px 0;
       text-decoration: none;
@@ -173,8 +168,6 @@
       color: var(--mid);
       cursor: pointer;
     }
-
-    /* ------------------------------------------------------- */
 
     /* CONTACTS */
     .contact-stack { display: flex; gap: 20px; margin-top: 48px; }
@@ -249,7 +242,7 @@
         letter-spacing: -0.01em;
     }
     
-    /* CLEAN LIST STYLING (Replacing Boxy Dropdowns) */
+    /* CLEAN LIST STYLING */
     .course-list {
         display: flex;
         flex-direction: column;
@@ -263,7 +256,7 @@
 
     summary {
         list-style: none;
-        padding: 16px 0; /* No horizontal padding to align with text */
+        padding: 16px 0;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
@@ -284,7 +277,7 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 12px;
         color: var(--mid);
-        width: 80px; /* Fixed width for alignment */
+        width: 80px;
         flex-shrink: 0;
     }
 
@@ -292,8 +285,43 @@
         font-size: 15px;
         font-weight: 500;
         color: var(--ink);
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
+    /* GRADUATE BADGE */
+/* THE MINIMALIST GRADUATE BADGE */
+.grad-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 550;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    
+    /* The Aesthetic Part */
+    padding: 2px 8px;
+    margin-left: 12px;
+    border-radius: 4px; /* Subtle radius matches the avatar-frame */
+    background: var(--faint);
+    color: var(--mid);
+    opacity: 0.7;
+    
+    /* Align with text baseline */
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.4s var(--ease-apple);
+}
+
+/* When hovering over the course row */
+
+/* When the course is expanded */
+details[open] .grad-badge {
+    background: var(--signal);
+    color: white;
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(0, 47, 167, 0.15);
+}
     .chev {
         width: 14px; 
         height: 14px; 
@@ -315,7 +343,7 @@
     }
 
     .detail-body {
-        padding: 0 0 24px 104px; /* Indent to match title (80px code + 24px gap) */
+        padding: 0 0 24px 104px;
         color: var(--mid);
         font-size: 14px;
         line-height: 1.6;
@@ -417,7 +445,7 @@
       <span class="page-title reveal">Selected Coursework</span>
 
       <div class="course-category reveal">
-        <div class="category-header">Mathematics</div>
+        <div class="category-header">Mathematics  +   Computer Science</div>
         
         <div class="course-list">
             <details>
@@ -490,8 +518,8 @@
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">MATH 448 </span>
-                        <span class="course-name">Complex Analysis</span>
+                        <span class="course-code">MATH 448</span>
+                        <span class="course-name">Complex Analysis (UIUC)</span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
@@ -500,23 +528,6 @@
                     <div class="tag-cloud">
                         <span class="tag">Stein & Shakarchi</span>
                         <span class="tag">2025</span>
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>
-                    <div class="summary-left">
-                        <span class="course-code">MATH 454</span>
-                        <span class="course-name">Game Theory</span>
-                    </div>
-                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                </summary>
-                <div class="detail-body">
-                    Partial games, partisan games, zero sum games, von Neumann’s Minimax Theorem, general sum games, Nash equilibrium, fixed point theorems, evolutionary game theory, signaling, coalitions, auctions, social choice theory.
-                    <div class="tag-cloud">
-                        <span class="tag">Maschler</span>
-                        <span class="tag">Spring 2026</span>
                     </div>
                 </div>
             </details>
@@ -533,7 +544,7 @@
                     Methods for static, dynamic, unconstrained, constrained optimization. Gradient, conjugate gradient, penalty methods. Lagrange multipliers, least squares, linear, nonlinear dynamic programming. Application to control and estimation.
                     <div class="tag-cloud">
                         <span class="tag">Chong & Zak</span>
-                        <span class="tag">Fall 2025</span>
+                        <span class ="tag">Fall 2025</span>
                     </div>
                 </div>
             </details>
@@ -559,14 +570,16 @@
                 <summary>
                     <div class="summary-left">
                         <span class="course-code">MATH 501</span>
-                        <span class="course-name">Graduate Numerical Analysis</span>
+                        <span class="course-name">
+                            Numerical Analysis
+                            <span class="grad-badge">Graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-                    Linear equations and matrices, Gauss elimination, error estimates, iteration techniques; contractive mappings, Newton’s method; matrix eigenvalue problems; least-squares approximation, Newton-Cotes and Gaussian quadratures; finite difference methods.
+                    Linear equations and matrices, Gauss elimination, error estimates, iteration techniques; contractive mappings, Newton's method; matrix eigenvalue problems; least-squares approximation, Newton-Cotes and Gaussian quadratures; finite difference methods.
                     <div class="tag-cloud">
-                        <span class="tag">Graduate</span>
                         <span class="tag">Spring 2026</span>
                     </div>
                 </div>
@@ -576,177 +589,168 @@
                 <summary>
                     <div class="summary-left">
                         <span class="course-code">MATH 505b</span>
-                        <span class="course-name">Graduate Probability</span>
+                        <span class="course-name">
+                            Applied Probability
+                            <span class="grad-badge">Graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
                     Markov processes in discrete or continuous time; renewal processes; martingales; Brownian motion and diffusion theory; random walks, inventory models, population growth, queuing models, shot noise.
-                    <div class="tag-cloud">
+                    <div class="tag-cloud">                      
                         <span class="tag">Grimmett Ch. 6–13</span>
                         <span class="tag">Spring 2025</span>
                     </div>
                 </div>
             </details>
-        </div>
-      </div>
-
-      <div class="course-category reveal">
-        <div class="category-header">Computer Science & Cognitive Systems</div>
-        
-        <div class="course-list">
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">CSCI 103</span>
-                        <span class="course-name">Object Oriented Programming</span>
+                        <span class="course-code">MATH 507a</span>
+                        <span class="course-name">
+                            Probability Theory
+                            <span class="grad-badge">Graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-                    Basic datatypes, assignments, control statements (if, switch, for, while), input/output (printf, scanf, cin, cout), functions, arrays, structures, recursion, dynamic memory, file handling. Programming in C/C++.
-                    <div class="tag-cloud">
-                        <span class="tag">C++</span>
-                        <span class="tag">Fall 2026</span>
-                </div>
-            </details>
-
-            <details>
-                <summary>
-                    <div class="summary-left">
-                        <span class="course-code">CSCI 104</span>
-                        <span class="course-name">Data Structures</span>
-                    </div>
-                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                </summary>
-                <div class="detail-body">
-                    Data structures including linked lists, balanced search trees, heaps, hash tables; probability and number theory applicable to the analysis of randomized data structures.
-                    <div class="tag-cloud">
-                        <span class="tag">C++</span>
+        Probability spaces; distributions and characteristic functions; laws of large numbers, central limit problems; stable and infinitely divisible laws; conditional distributions.                    <div class="tag-cloud">                     
+                        <span class="tag">Durrett</span>
                         <span class="tag">Spring 2027</span>
                     </div>
                 </div>
             </details>
-
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">CSCI 170</span>
-                        <span class="course-name">Discrete Mathematics</span>
+                        <span class="course-code">MATH 525a</span>
+                        <span class="course-name">
+                            Real Analysis
+                            <span class="grad-badge">Graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-                    Boolean algebra, propositional and first-order logic, proof techniques. Sets, functions, series, summations. Big-O notation; algorithm analysis. Recursion; basic sorting algorithms. Graphs and basic graph algorithms.
-                    <div class="tag-cloud">
-                        <span class="tag">Lewis and Zax</span>
+        Measure and integration over abstract measure spaces, Radon-Nikodym theorem, Fubini's theorem, convergence theorems, differentiation.                    <div class="tag-cloud">                       
+                        <span class="tag">Folland and Rudin (Papa)</span>
                         <span class="tag">Fall 2026</span>
                     </div>
                 </div>
-            </details>
-
+            </details>            
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">PHIL 246</span>
-                        <span class="course-name">Foundations of Cognitive Science</span>
+                        <span class="course-code">MATH 541a</span>
+                        <span class="course-name">
+                            Mathematical Statistics
+                            <span class="grad-badge">graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-Introduction to research in interdisciplinary cognitive science, highlighting ideas and methods from philosophy, psychology, linguistics, neuroscience, and computer science.                    <div class="tag-cloud">
+                    Parametric families of distributions, sufficiency. Estimation: methods of moments, maximum likelihood, unbiased estimation. Comparison of estimators, optimality, information inequality, asymptotic efficiency. EM algorithm, jackknife and bootstrap.
+                    <div class="tag-cloud">                   
+                        <span class="tag">Casella Berger</span>
                         <span class="tag">Spring 2026</span>
                     </div>
                 </div>
             </details>
-
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">CSCI 270</span>
-                        <span class="course-name">Algorithms</span>
+                        <span class="course-code">EE 556</span>
+                        <span class="course-name">
+                            Stochastic Systems and Reinforcement Learning
+                            <span class="grad-badge">graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-                    Algorithm analysis. Greedy algorithms, divide and conquer, dynamic programming, graph algorithms. NP-completeness and basic recursion theory and undecidability. Sorting lower bounds. Number-theory based cryptography.
-                    <div class="tag-cloud">
-                        <span class="tag">Kleinberg & Tardos</span>
-                        <span class="tag">Fall 2027</span>
+                    Stochastic system models, Dynamic programming, Linear quadratic control, Kalman filtering and estimation, System identification, approximate dynamic programming methods, adaptive control, reinforcement and online learning.            <div class="tag-cloud">
+                        <span class="tag">Spring 2027</span>
                     </div>
                 </div>
             </details>
-
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">LING 285</span>
-                        <span class="course-name">Human Language & Technology</span>
+                        <span class="course-code">CSCI 567</span>
+                        <span class="course-name">
+                            Machine Learning
+                            <span class="grad-badge">graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-                    Phonetics; signal processing; speech recognition; neural networks; natural language processing basics.
+                    Statistical methods for building intelligent and adaptive systems that improve performance from experiences; focus on theoretical understanding of these methods and their computational implications.           
                     <div class="tag-cloud">
+                        <span class="tag">Spring 2027</span>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="summary-left">
+                        <span class="course-code">CSCI 573</span>
+                        <span class="course-name">
+                            Probabilistic Reasoning
+                            <span class="grad-badge">graduate</span>
+                        </span>
+                    </div>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="detail-body">
+Reasoning under uncertainty, statistical directed and undirected graphical models, temporal modeling, inference in graphical models, parameter learning, decisions under uncertainty.                    <div class="tag-cloud">
+                        <span class="tag">Spring 2027</span>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>
+                    <div class="summary-left">
+                        <span class="course-code">ISE 615</span>
+                        <span class="course-name">
+                            Reinforcement Learning & Control Theory
+                            <span class="grad-badge">graduate</span>
+                        </span>
+                    </div>
+                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="detail-body">
+                    Modern stochastic control theory, recent developments in reinforcement learning theory, game theory, mean-field analysis and reinforcement learning in practice.                    <div class="tag-cloud">
                         <span class="tag">Spring 2026</span>
                     </div>
                 </div>
             </details>
-
             <details>
                 <summary>
                     <div class="summary-left">
-                        <span class="course-code">CSCI 356</span>
-                        <span class="course-name">Computer Systems</span>
+                        <span class="course-code">ISE 662</span>
+                        <span class="course-name">
+                            Advanced Decision Theory
+                            <span class="grad-badge">graduate</span>
+                        </span>
                     </div>
                     <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="detail-body">
-                    Computer organization; entity abstraction and representation; program execution; code optimization; memory usage; exception handling; processing control; computer performance; hands-on work done in C and assembly.
-                    <div class="tag-cloud">
-                        <span class="tag">Bryant and O’Hallaron</span>
-                        <span class="tag">Fall 2027</span>
+                    Rational decision making; value and utility functions; distribution theory; invariance relations; copulas; value of information and control; multiattribute utility; decision and game theory; behavioral research.<div class="tag-cloud">
+                        <span class="tag">Spring 2027</span>
                     </div>
                 </div>
-            </details>
-
-            <details>
-                <summary>
-                    <div class="summary-left">
-                        <span class="course-code">CSCI 360</span>
-                        <span class="course-name">Artificial Intelligence</span>
-                    </div>
-                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                </summary>
-                <div class="detail-body">
-                    Concepts and algorithms underlying the understanding and construction of intelligent systems. Agents, problem solving, search, representation, reasoning, planning, machine learning.
-                    <div class="tag-cloud">
-                        <span class="tag">Russell & Norvig</span>
-                        <span class="tag">Fall 2027</span>
-                    </div>
-                </div>
-            </details>
-
-            <details>
-                <summary>
-                    <div class="summary-left">
-                        <span class="course-code">CSCI 467</span>
-                        <span class="course-name">Machine Learning</span>
-                    </div>
-                    <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                </summary>
-                <div class="detail-body">
-                    Algorithms for learning behavior from data, including both mathematical underpinnings and practical techniques. Covers supervised learning, deep learning, unsupervised learning and reinforcement learning.
-                    <div class="tag-cloud">
-                        <span class="tag">Fall 2027</span>
-                    </div>
-                </div>
-            </details>
+            </details>            
         </div>
       </div>
 
+      
       <div class="course-category reveal">
-        <div class="category-header">Economics & Finance</div>
+        <div class="category-header">Economics + Finance</div>
         
         <div class="course-list">
             <details>
